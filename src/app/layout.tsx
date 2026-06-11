@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,6 +28,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(()=>{try{let s=localStorage.getItem("theme");if(s!=="light"&&s!=="dark")s=null;const m=window.matchMedia("(prefers-color-scheme: dark)");const h=new Date().getHours();const f=h>=19||h<7?"dark":"light";document.documentElement.dataset.theme=s??(m.media!=="not all"?(m.matches?"dark":"light"):f)}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
       <SpeedInsights />
     </html>
