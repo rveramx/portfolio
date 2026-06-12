@@ -4,11 +4,17 @@
   --background: oklch(98% 0 0);
   --foreground: oklch(15% 0 0);
   --accent: oklch(70% 0.15 250);
+  --surface: oklch(96.5% 0.005 250);
+  --glow-1: oklch(85% 0.09 250 / 0.5);
+  --glow-2: oklch(90% 0.07 320 / 0.35);
 }
 
 [data-theme="dark"] {
   --background: oklch(14% 0 0);
   --foreground: oklch(95% 0 0);
+  --surface: oklch(18% 0.012 250);
+  --glow-1: oklch(45% 0.13 250 / 0.35);
+  --glow-2: oklch(40% 0.11 320 / 0.25);
 }
 
 @theme inline {
@@ -17,6 +23,7 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
 }
 
 html {
@@ -27,4 +34,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
 }

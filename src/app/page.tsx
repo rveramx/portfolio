@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
@@ -11,8 +12,13 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Section id="hero">
-          <p className="text-sm text-foreground/60">
+        <Section id="hero" className="max-w-4xl py-36 sm:py-44">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-128
+      bg-[radial-gradient(55%_50%_at_50%_15%,var(--glow-1),transparent_70%),radial-gradient(35%_40%_at_78%_30%,var(--glow-2),transparent_70%)]"
+          />
+          <p className="text-md text-foreground/60 py-2">
             {profile.name} · {profile.role} · {profile.location}
           </p>
           <h1 className="text-5xl font-bold">{profile.tagline}</h1>
@@ -32,11 +38,8 @@ export default function Home() {
           </div>
         </Section>
         <Section id="about" title="Acerca de">
-          <p className="text-foreground/70">
-            Soy fan del minimalismo, mi filosofía de trabajo refleja este
-            concepto: calidad por encima de cantidad, simplicidad por encima de
-            complejidad.
-          </p>
+          <p className="text-foreground/70">{profile.intro}</p>
+          <h3 className="font-semibold pt-5 text-lg">Tecnologías:</h3>
           <ul className="mt-6 flex flex-wrap gap-2">
             {profile.stack.map((t) => (
               <li
@@ -57,6 +60,7 @@ export default function Home() {
           </a>
         </Section>
       </main>
+      <Footer />
     </>
   );
 }

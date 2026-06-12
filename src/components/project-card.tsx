@@ -2,7 +2,7 @@ import type { Project } from "@/content/projects";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="rounded-lg border border-foreground/10 p-6">
+    <article className="reveal rounded-2xl border border-foreground/10 bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
       <h3 className="text-lg font-semibold">{project.title}</h3>
       <p className="mt-2 text-foreground/70">{project.summary}</p>
       {project.metrics && (
