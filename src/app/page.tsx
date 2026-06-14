@@ -21,7 +21,7 @@ export default function Home() {
           <p className="text-md text-foreground/60 py-2">
             {profile.name} · {profile.role} · {profile.location}
           </p>
-          <h1 className="text-5xl font-bold">{profile.tagline}</h1>
+          <h1 className="font-heading text-5xl font-bold">{profile.tagline}</h1>
         </Section>
         <Section id="services" title="Mis servicios">
           <div className="grid gap-6 sm:grid-cols-3">
